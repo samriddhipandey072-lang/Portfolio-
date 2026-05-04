@@ -1,222 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samriddhi Thapa — Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Portfolio - Samridhi Thapa</title><!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
 
-/* ================= BASE ================= */
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-font-family:'Poppins',sans-serif;
-background:#f6f8fc;
-color:#111827;
-overflow-x:hidden;
-}
-.container{width:92%;max-width:1200px;margin:auto}
-section{padding:80px 0}
+    body {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: #333;
+    }
 
-/* ================= NAVBAR ================= */
-header{
-position:sticky;top:0;background:white;z-index:100;
-box-shadow:0 2px 10px rgba(0,0,0,.05)
-}
-.nav{display:flex;justify-content:space-between;align-items:center;height:70px}
-.logo{font-weight:800;font-size:24px;color:#2563eb}
+    header {
+        text-align: center;
+        padding: 40px 20px;
+        color: white;
+        animation: fadeIn 1.5s ease-in-out;
+    }
 
-.nav-links{display:flex;gap:30px;align-items:center}
-.nav-links a{text-decoration:none;color:#111;font-weight:500}
-.nav-links a:hover{color:#2563eb}
+    header img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-top: 15px;
+        border: 4px solid white;
+        transition: transform 0.3s;
+    }
 
-.contact-btn{
-background:#2563eb;color:#fff;padding:10px 18px;border-radius:10px
-}
+    header img:hover {
+        transform: scale(1.1);
+    }
 
-/* mobile menu */
-.menu-toggle{display:none;font-size:28px;cursor:pointer}
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 15px;
+        background: rgba(0,0,0,0.2);
+        backdrop-filter: blur(10px);
+    }
 
-/* ================= HERO ================= */
-.hero{display:flex;align-items:center;gap:40px}
-.hero-left{flex:1}
-.hero-right{flex:1;text-align:center}
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s;
+    }
 
-.hello{background:#eef4ff;color:#2563eb;padding:8px 16px;border-radius:20px;display:inline-block;font-weight:600}
+    nav a:hover {
+        color: #ffdd57;
+    }
 
-h1{font-size:42px;margin-top:20px}
-.gradient{
-display:block;
-font-size:64px;
-font-weight:800;
-background:linear-gradient(90deg,#2563eb,#8b46ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+    section {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        animation: slideUp 1s ease;
+    }
 
-.subtext{margin:20px 0;color:#6b7280}
+    h2 {
+        margin-bottom: 10px;
+        color: #764ba2;
+    }
 
-.hero-buttons{display:flex;gap:16px}
-.btn{
-padding:14px 26px;border-radius:12px;font-weight:600;text-decoration:none
-}
-.primary{background:linear-gradient(90deg,#2563eb,#8b46ff);color:#fff}
-.outline{border:2px solid #2563eb;color:#2563eb}
+    ul {
+        line-height: 1.8;
+    }
 
-.profile-card{
-background:white;padding:20px;border-radius:20px;
-box-shadow:0 30px 60px rgba(0,0,0,.08);
-max-width:350px;margin:auto
-}
-.profile-card img{width:100%;border-radius:14px}
+    footer {
+        text-align: center;
+        padding: 15px;
+        color: white;
+        margin-top: 20px;
+    }
 
-/* ================= SERVICES ================= */
-.services{background:#eef2f7;text-align:center}
-.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;margin-top:40px}
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-.card{
-background:white;padding:30px;border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-transition:.3s;
-}
-.card:hover{transform:translateY(-6px)}
-
-/* ================= ABOUT ================= */
-.about-wrap{display:flex;gap:40px;align-items:center}
-.about-wrap img{width:260px;border-radius:50%}
-
-/* ================= PROJECTS ================= */
-.projects{background:#eef2f7;text-align:center}
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:40px}
-
-.project{background:white;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.05)}
-.project img{width:100%;height:180px;object-fit:cover}
-.project-body{padding:20px}
-
-/* ================= CTA ================= */
-.cta{
-background:linear-gradient(90deg,#2563eb,#8b46ff);
-color:white;text-align:center;padding:70px 20px
-}
-
-/* ================= FOOTER ================= */
-footer{text-align:center;padding:20px;color:#94a3b8}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:1000px){
-.hero{flex-direction:column;text-align:center}
-.about-wrap{flex-direction:column;text-align:center}
-.service-grid{grid-template-columns:repeat(2,1fr)}
-.project-grid{grid-template-columns:repeat(2,1fr)}
-.hero-buttons{justify-content:center}
-}
-
-@media(max-width:768px){
-.menu-toggle{display:block}
-.nav-links{
-position:absolute;top:70px;right:0;background:white;width:100%;
-flex-direction:column;gap:20px;padding:20px;display:none
-}
-.nav-links.active{display:flex}
-}
-
-@media(max-width:600px){
-.gradient{font-size:42px}
-.service-grid,.project-grid{grid-template-columns:1fr}
-}
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
 </style>
+
 </head>
+<body><header>
+    <h1>Samridhi Thapa</h1>
+    <p>B.Tech Student | Aspiring Software Developer</p>
+    <img src="SAM.jpeg" alt="Profile Photo">
+</header><nav>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+</nav><section id="about">
+    <h2>About Me</h2>
+    <p>I am Samridhi Thapa, a B.Tech student from Graphic Era Hill University, Dehradun. I am calm in nature, possess strong problem-solving skills, and believe in teamwork.</p>
+</section><section id="education">
+    <h2>Education</h2>
+    <ul>
+        <li><strong>Course:</strong> B.Tech</li>
+        <li><strong>College:</strong> Graphic Era Hill University, Dehradun</li>
+    </ul>
+</section><section id="skills">
+    <h2>Skills</h2>
+    <ul>
+        <li>Programming Languages: C, C++</li>
+        <li>Learning: Python, Java</li>
+        <li>Problem Solving</li>
+        <li>Teamwork</li>
+    </ul>
+</section><section id="projects">
+    <h2>Projects</h2>
+    <ul>
+        <li>Completed Projects: 4</li>
+        <li>Ongoing Projects: 2</li>
+    </ul>
+</section><section id="documents">
+    <h2>Documents / Uploads</h2>
+    <p>You can upload your files or showcase documents here:</p>
+    <input type="file" id="fileUpload" multiple style="margin-top:10px;">
+    <ul id="fileList"></ul>
+</section><script>
+    const fileInput = document.getElementById('fileUpload');
+    const fileList = document.getElementById('fileList');
 
-<body>
-
-<header>
-<div class="container nav">
-<div class="logo">Samriddhi Thapa</div>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<nav class="nav-links" id="menu">
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#contact" class="contact-btn">Contact</a>
-</nav>
-</div>
-</header>
-
-<!-- HERO -->
-<section id="home" class="container hero">
-<div class="hero-left">
-<div class="hello">👋 Hello!</div>
-<h1>I’m Samriddhi Thapa
-<span class="gradient">Web Designer & Developer</span></h1>
-<p class="subtext">I build modern, responsive and creative digital experiences.</p>
-
-<div class="hero-buttons">
-<a href="#" class="btn primary">LinkedIn</a>
-<a href="#" class="btn outline">GitHub</a>
-</div>
-</div>
-
-<div class="hero-right">
-<div class="profile-card">
-<img src="SAM.jpeg">
-</div>
-</div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="services">
-<div class="container">
-<h2>Services I Provide</h2>
-<div class="service-grid">
-<div class="card">🎬 Video Editing</div>
-<div class="card">💻 Website Development</div>
-<div class="card">🎨 Graphic Design</div>
-<div class="card">📱 Social Media</div>
-</div>
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="container">
-<div class="about-wrap">
-<img src="SAM.jpeg">
-<div>
-<h2>About Me</h2>
-<p>I love building beautiful and functional projects that make an impact.</p>
-</div>
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="projects">
-<div class="container">
-<h2>Projects</h2>
-<div class="project-grid">
-<div class="project"><img src="project1.jpg"><div class="project-body">Project One</div></div>
-<div class="project"><img src="project2.jpg"><div class="project-body">Project Two</div></div>
-<div class="project"><img src="project3.jpg"><div class="project-body">Project Three</div></div>
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="cta">
-<h2>Let's Work Together</h2>
-<p>Email: samriddhipandey072@gmail.com<S/p>
-</section>
-
-<footer>© 2026 Samriddhi Thapa</footer>
-
-<script>
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
-}
-</script>
-
-</body>
+    fileInput.addEventListener('change', function() {
+        fileList.innerHTML = "";
+        for (let i = 0; i < this.files.length; i++) {
+            const li = document.createElement('li');
+            li.textContent = this.files[i].name;
+            fileList.appendChild(li);
+        }
+    });
+</script><footer>
+    <p>&copy; 2026 Samridhi Thapa | E-Portfolio</p>
+</footer></body>
 </html>
