@@ -1,482 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>samridhi thapa — Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samriddhi Thapa — Portfolio</title>
 
-  <!-- Poppins font (matches template) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    /* ---------- Reset & base ---------- */
-    * { box-sizing: border-box; }
-    html,body { height:100%; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(90deg,#fbfdff 0%, #f5f7fb 100%);
-      color: #1f2937;
-      overflow-y: scroll;
-    }
-    img { max-width: 100%; display:block; }
+<style>
 
-    .container { max-width: 1320px; width: 92%; margin: 0 auto; }
+/* ================= BASE ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:'Poppins',sans-serif;
+background:#f6f8fc;
+color:#111827;
+overflow-x:hidden;
+}
+.container{width:92%;max-width:1200px;margin:auto}
+section{padding:80px 0}
 
-    /* ---------- NAV ---------- */
-    header {
-      background: rgba(255,255,255,0.9);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(0,0,0,0.04);
-      backdrop-filter: saturate(180%) blur(8px);
-    }
-    .nav { height:72px; display:flex; align-items:center; justify-content:space-between; }
-    .logo { color:#2370ff; font-weight:800; font-size:22px; margin-left: 12px; }
-    .nav-links { display:flex; gap:34px; align-items:center; font-weight:500; color:#111827; margin-right: 12px; }
-    .nav-links a { color:#111827; text-decoration:none; }
-    .nav-links a:hover { color:#2563eb; }
-    .contact-btn { background: #2370ff; color:white; padding:10px 18px; border-radius:12px; box-shadow: 0 6px 20px rgba(35,112,255,0.15); text-decoration:none; }
+/* ================= NAVBAR ================= */
+header{
+position:sticky;top:0;background:white;z-index:100;
+box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+.nav{display:flex;justify-content:space-between;align-items:center;height:70px}
+.logo{font-weight:800;font-size:24px;color:#2563eb}
 
-    /* ---------- HERO ---------- */
-    .hero { display:flex; align-items:center; gap:40px; padding:64px 0; }
-    .hero-left { width:58%; padding-left:24px; }
-    .hello-bubble {
-      display:inline-flex; align-items:center; gap:8px; padding:10px 16px; background:#eef4ff; color:#2563eb; border-radius:18px; font-weight:600; width:max-content;
-      box-shadow: 0 2px 0 rgba(37,99,235,0.05);
-    }
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{text-decoration:none;color:#111;font-weight:500}
+.nav-links a:hover{color:#2563eb}
 
-    .headline {
-      margin-top:26px;
-      font-weight:800;
-      line-height:0.95;
-      color:#0f1724;
-    }
-    .headline .name { color:#2563eb; }
-    .headline .big-gradient {
-      display:block;
-      font-size:68px;
-      /* gradient text like template */
-      background: linear-gradient(90deg,#2563eb,#8b46ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+.contact-btn{
+background:#2563eb;color:#fff;padding:10px 18px;border-radius:10px
+}
 
-    .subtext { margin-top:20px; color:#667085; font-size:16px; max-width:560px; }
+/* mobile menu */
+.menu-toggle{display:none;font-size:28px;cursor:pointer}
 
-    .hero-cta { margin-top:28px; display:flex; gap:16px; align-items:center; }
-    .btn-primary {
-      background: linear-gradient(90deg,#246BFF 0%, #8C47FF 100%);
-      color:white; padding:14px 28px; border-radius:14px; font-weight:700; box-shadow: 0 10px 30px rgba(36,107,255,0.15);
-      text-decoration:none;
-    }
-    .btn-outline {
-      background:white; border:2px solid rgba(36,107,255,0.12); color:#2563eb; padding:12px 26px; border-radius:12px; font-weight:600; text-decoration:none;
-    }
+/* ================= HERO ================= */
+.hero{display:flex;align-items:center;gap:40px}
+.hero-left{flex:1}
+.hero-right{flex:1;text-align:center}
 
-    /* ---------- hero right card (profile picture) ---------- */
-    .hero-right { width:42%; display:flex; justify-content:center; position:relative; }
-    .profile-frame {
-      width:420px; padding:26px; border-radius:28px; background:white; position:relative;
-      box-shadow: 0 40px 60px rgba(140,71,255,0.06), 0 20px 40px rgba(36,107,255,0.06);
-      overflow:visible;
-    }
-    .outer-glow {
-      position:absolute; inset:-14px; border-radius:34px; filter: blur(36px); pointer-events:none;
-      background: linear-gradient(180deg, rgba(36,107,255,0.06), rgba(140,71,255,0.08));
-      z-index:-2;
-    }
-    .tag-top {
-      position:absolute; right:34px; top:-12px; background:#2563eb; color:white; padding:8px 14px; border-radius:18px; font-weight:700; font-size:14px;
-    }
-    .photo-wrap { border-radius:20px; overflow:hidden; background:#f3f6ff; }
-    .photo-wrap img { width:100%; height:380px; object-fit:cover; display:block; border-radius:14px; }
+.hello{background:#eef4ff;color:#2563eb;padding:8px 16px;border-radius:20px;display:inline-block;font-weight:600}
 
-    .tag-bottom {
-      position:absolute; left:18px; bottom:-18px; background:linear-gradient(90deg,#8C47FF,#6E56FF); color:white; padding:8px 14px; border-radius:18px; font-weight:700;
-      font-size:13px;
-      box-shadow: 0 12px 30px rgba(140,71,255,0.12);
-    }
+h1{font-size:42px;margin-top:20px}
+.gradient{
+display:block;
+font-size:64px;
+font-weight:800;
+background:linear-gradient(90deg,#2563eb,#8b46ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
 
-    /* ---------- SERVICES ---------- */
-    section.services { padding:60px 0; background:#f3f5f8; }
-    .services .heading { text-align:center; margin-bottom:18px; font-size:40px; font-weight:800; }
-    .services .sub { text-align:center; color:#6b7280; margin-bottom:36px; }
-    .service-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
-    .service-card {
-      background:white; border-radius:16px; padding:30px; box-shadow: 0 6px 20px rgba(15,23,36,0.04);
-    }
-    .service-card h3 { font-size:20px; margin-top:10px; margin-bottom:12px; font-weight:700; }
-    .service-card p { color:#6b7280; line-height:1.6; }
+.subtext{margin:20px 0;color:#6b7280}
 
-    .see-more {
-      display:flex; justify-content:center; margin-top:36px;
-    }
-    .see-more .btn {
-      background:#2563eb; color:white; padding:16px 36px; border-radius:14px; font-weight:700; box-shadow: 0 12px 30px rgba(37,99,235,0.15);
-    }
+.hero-buttons{display:flex;gap:16px}
+.btn{
+padding:14px 26px;border-radius:12px;font-weight:600;text-decoration:none
+}
+.primary{background:linear-gradient(90deg,#2563eb,#8b46ff);color:#fff}
+.outline{border:2px solid #2563eb;color:#2563eb}
 
-    /* ---------- TIMELINE / ACADEMIC ---------- */
-    section.timeline { padding:80px 0; background:white; }
-    .timeline h2 { text-align:center; font-size:44px; font-weight:800; margin-bottom:22px; }
-    .timeline .wrap { display:flex; gap:40px; align-items:flex-start; margin-top:20px; }
-    .timeline .line-column { width:90px; display:flex; justify-content:center; position:relative; }
-    .timeline .vertical {
-      width:3px; background:linear-gradient(180deg,#e6edf9,#f2f4f8); height:830px; border-radius:4px; position:relative;
-    }
-    .dot { width:10px; height:10px; background:#2563eb; border-radius:50%; position:absolute; left:50%; transform:translateX(-50%); top:6px; }
+.profile-card{
+background:white;padding:20px;border-radius:20px;
+box-shadow:0 30px 60px rgba(0,0,0,.08);
+max-width:350px;margin:auto
+}
+.profile-card img{width:100%;border-radius:14px}
 
-    .edu-cards { flex:1; }
-    .edu-card { background:white; padding:28px; border-radius:12px; box-shadow:0 10px 30px rgba(15,23,36,0.04); margin-bottom:28px; }
+/* ================= SERVICES ================= */
+.services{background:#eef2f7;text-align:center}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;margin-top:40px}
 
-    /* ---------- PROJECTS (optional scaffold so the nav link works) ---------- */
-    section.projects { padding:60px 0; background:#f3f5f8; text-align:center; }
-    .projects .heading { font-size:44px; font-weight:800; margin-bottom:8px; }
-    .projects .sub { color:#6b7280; margin-bottom:28px; }
-    .proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; max-width:1200px; margin:0 auto; }
-    .proj-card { background:white; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(15,23,36,0.04); text-align:left; }
-    .proj-card img { width:100%; height:180px; object-fit:cover; display:block; }
-    .proj-body { padding:20px; }
-    .proj-body h4 { font-weight:700; margin-bottom:10px; }
-    .proj-tags { margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
-    .tag { background:#eef2ff; color:#2563eb; padding:6px 10px; border-radius:999px; font-weight:600; font-size:13px; }
+.card{
+background:white;padding:30px;border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+transition:.3s;
+}
+.card:hover{transform:translateY(-6px)}
 
-    .view-all-btn { margin-top:28px; text-align:center; }
-    .view-all-btn .btn { background:#2563eb; color:white; padding:16px 32px; border-radius:16px; font-weight:700; box-shadow:0 12px 30px rgba(37,99,235,0.15); }
+/* ================= ABOUT ================= */
+.about-wrap{display:flex;gap:40px;align-items:center}
+.about-wrap img{width:260px;border-radius:50%}
 
-    /* ---------- CTA / CONTACT ---------- */
-    .cta {
-      background: linear-gradient(90deg,#2e6bff 0%, #8b46ff 100%);
-      color:white; padding:64px 0; text-align:center; margin-top:40px;
-    }
-    .cta h2 { font-size:44px; font-weight:800; margin-bottom:10px; }
-    .cta p { max-width:900px; margin:0 auto 24px; color:rgba(255,255,255,0.85); }
-    .cta .cta-btn { background:transparent; border:2px solid rgba(255,255,255,0.18); color:white; padding:12px 28px; border-radius:14px; font-weight:700; margin:8px; display:inline-block; text-decoration:none; }
+/* ================= PROJECTS ================= */
+.projects{background:#eef2f7;text-align:center}
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:40px}
 
-    /* ---------- footer ---------- */
-    footer { text-align:center; padding:18px 0; color:#94a3b8; }
+.project{background:white;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.project img{width:100%;height:180px;object-fit:cover}
+.project-body{padding:20px}
 
-    /* ---------- Responsive adjustments ---------- */
-    @media (max-width:1200px) {
-      .headline .big-gradient { font-size:56px; }
-    }
-    @media (max-width:992px) {
-      .hero { flex-direction:column; }
-      .hero-left, .hero-right { width:100%; padding-left:0; }
-      .profile-frame { width:100%; max-width:420px; }
-      .service-grid { grid-template-columns: repeat(2,1fr); }
-      .timeline .wrap { flex-direction:column; }
-      .timeline .line-column { display:none; }
-    }
-    @media (max-width:600px) {
-      .headline .big-gradient { font-size:44px; }
-      .service-grid { grid-template-columns: 1fr; }
-      .nav-links { gap:18px; }
-      .logo { margin-left: 0; }
-    }
-  </style>
+/* ================= CTA ================= */
+.cta{
+background:linear-gradient(90deg,#2563eb,#8b46ff);
+color:white;text-align:center;padding:70px 20px
+}
+
+/* ================= FOOTER ================= */
+footer{text-align:center;padding:20px;color:#94a3b8}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1000px){
+.hero{flex-direction:column;text-align:center}
+.about-wrap{flex-direction:column;text-align:center}
+.service-grid{grid-template-columns:repeat(2,1fr)}
+.project-grid{grid-template-columns:repeat(2,1fr)}
+.hero-buttons{justify-content:center}
+}
+
+@media(max-width:768px){
+.menu-toggle{display:block}
+.nav-links{
+position:absolute;top:70px;right:0;background:white;width:100%;
+flex-direction:column;gap:20px;padding:20px;display:none
+}
+.nav-links.active{display:flex}
+}
+
+@media(max-width:600px){
+.gradient{font-size:42px}
+.service-grid,.project-grid{grid-template-columns:1fr}
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-    <div class="container nav" role="navigation" aria-label="Primary">
-      <div class="logo">Samriddhi Thapa</div>
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About me</a>
-        <a href="#projects">Projects</a>
-        <a class="contact-btn" href="#contact">Contact me</a>
-      </nav>
-    </div>
-  </header>
+<header>
+<div class="container nav">
+<div class="logo">Samriddhi Thapa</div>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav class="nav-links" id="menu">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact" class="contact-btn">Contact</a>
+</nav>
+</div>
+</header>
 
-  <!-- HERO -->
-  <main class="container">
-    <section id="home" class="hero">
-      <div class="hero-left">
-        <div class="hello-bubble" aria-label="Greeting">👋 Hello!</div>
+<!-- HERO -->
+<section id="home" class="container hero">
+<div class="hero-left">
+<div class="hello">👋 Hello!</div>
+<h1>I’m Samriddhi Thapa
+<span class="gradient">Web Designer & Developer</span></h1>
+<p class="subtext">I build modern, responsive and creative digital experiences.</p>
 
-        <h1 class="headline" style="font-size:46px;">
-          I'm <span class="name">Samriddhi Thapa</span>,
-          <span class="big-gradient">Web Designer &<br> Developer Enthusiast</span>
-        </h1>
+<div class="hero-buttons">
+<a href="#" class="btn primary">LinkedIn</a>
+<a href="#" class="btn outline">GitHub</a>
+</div>
+</div>
 
-        <p class="subtext">Innovative Digital Marketer with Expertise in Driving Online Growth through Strategic Campaigns</p>
+<div class="hero-right">
+<div class="profile-card">
+<img src="SAM.jpeg">
+</div>
+</div>
+</section>
 
-        <div class="hero-cta">
-          <a class="btn-primary" href="https://www.linkedin.com/in/shresth-krishali-704572341" aria-label="LinkedIn profile">
-            <!-- LinkedIn Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.026-3.037-1.852-3.037-1.853 0-2.137 1.447-2.137 2.942v5.664h-3.554V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.368-1.85 3.602 0 4.27 2.37 4.27 5.455v6.286zM5.337 7.433a2.062 2.062 0 110-4.124 2.062 2.062 0 010 4.124zM6.915 20.452H3.758V9h3.157v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-            </svg>
-          </a>
-          <a class="btn-outline" href="https://github.com/shresth08" aria-label="GitHub profile">
-            <!-- GitHub Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#000000" aria-hidden="true">
-              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.304.762-1.604-2.665-.3-5.466-1.334-5.466-5.93 0-1.31.468-2.381 1.236-3.221-.124-.303-.536-1.521.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.655 1.655.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.804 5.625-5.475 5.921.43.371.823 1.102.823 2.222 0 1.604-.015 2.896-.015 3.286 0 .321.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-            </svg>
-          </a>
-        </div>
-      </div>
+<!-- SERVICES -->
+<section id="services" class="services">
+<div class="container">
+<h2>Services I Provide</h2>
+<div class="service-grid">
+<div class="card">🎬 Video Editing</div>
+<div class="card">💻 Website Development</div>
+<div class="card">🎨 Graphic Design</div>
+<div class="card">📱 Social Media</div>
+</div>
+</div>
+</section>
 
-      <div class="hero-right">
-        <div class="profile-frame">
-          <div class="outer-glow"></div>
-          <div class="tag-top">Web Designer</div>
+<!-- ABOUT -->
+<section id="about" class="container">
+<div class="about-wrap">
+<img src="SAM.jpeg">
+<div>
+<h2>About Me</h2>
+<p>I love building beautiful and functional projects that make an impact.</p>
+</div>
+</div>
+</section>
 
-          <div class="photo-wrap">
-            <img src="SAM.jpeg" alt="Profile photo">
-          </div>
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+<div class="container">
+<h2>Projects</h2>
+<div class="project-grid">
+<div class="project"><img src="project1.jpg"><div class="project-body">Project One</div></div>
+<div class="project"><img src="project2.jpg"><div class="project-body">Project Two</div></div>
+<div class="project"><img src="project3.jpg"><div class="project-body">Project Three</div></div>
+</div>
+</div>
+</section>
 
-          <div class="tag-bottom">developer</div>
-        </div>
-      </div>
-    </section>
-  </main>
+<!-- CONTACT -->
+<section id="contact" class="cta">
+<h2>Let's Work Together</h2>
+<p>Email: shristkrishali@gmail.com</p>
+</section>
 
-  <!-- About Me Section -->
-  <section id="about-me" style="padding: 60px 20px; background-color: #f9f9f9; font-family: 'Poppins', sans-serif;">
-    <div style="max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
-      
-      <!-- Second Profile Photo -->
-      <div style="flex: 1; text-align: center;">
-        <img src="SAM.jpeg" alt="Second profile photo" 
-             style="width: 280px; height: 280px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-      </div>
-      
-      <!-- About Me Text -->
-      <div style="flex: 2;">
-        <h2 style="font-size: 2rem; margin-bottom: 40px; color: #000000;">About Me</h2>
-        <p style="line-height: 1.6; color: #555;">
-          Hi, I'm Samriddhi Thapa, a passionate developer and designer who loves bringing creative ideas to life.
-          I enjoy building modern, functional, and visually appealing projects that make an impact.
-        </p>
+<footer>© 2026 Samriddhi Thapa</footer>
 
-        <!-- Stats -->
-        <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 25px 0;">
-          <div>
-            <h3 style="font-size: 1.5rem; color: #333;">100+</h3>
-            <p style="color: #777;">Working Hours </p>
-          </div>
-          <div>
-            <h3 style="font-size: 1.5rem; color: #333;">2+</h3>
-            <p style="color: #777;">Projects Completed</p>
-          </div>
-          <div>
-            <h3 style="font-size: 1.5rem; color: #333;">2 Years</h3>
-            <p style="color: #777;">Experience</p>
-          </div>
-        </div>
+<script>
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+</script>
 
-        <!-- CV Download Button (fixed: use a relative path you host) -->
-        <a href="Samriddhi_Thapa_CV.pdf" download 
-           style="display: inline-block; padding: 12px 24px; background-color: #007bff; color: white; text-decoration: none; border-radius: 6px; transition: 0.3s;">
-          Download CV 📥
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="services">
-    <div class="container">
-      <div class="heading">Services <span style="color:#2563eb">I Provide</span></div>
-      <div class="sub">Comprehensive digital solutions to help your business thrive in the modern world</div>
-
-      <div style="height:28px"></div>
-
-      <div class="service-grid">
-        <div class="service-card">
-          <div style="font-size:28px">🎬</div>
-          <h3>Video Editing</h3>
-          <p>Professional video editing and post-production services for compelling storytelling</p>
-          <a style="color:#2563eb; font-weight:600; margin-top:10px; display:inline-block;" href="#contact" aria-label="Contact about video editing">Learn More →</a>
-        </div>
-
-        <div class="service-card">
-          <div style="font-size:28px">💻</div>
-          <h3>Website Development</h3>
-          <p>Modern, responsive websites built with cutting-edge technologies</p>
-          <a style="color:#2563eb; font-weight:600; margin-top:10px; display:inline-block;" href="#contact" aria-label="Contact about website development">Learn More →</a>
-        </div>
-
-        <div class="service-card">
-          <div style="font-size:28px">🎨</div>
-          <h3>Graphic Designer</h3>
-          <p>Creative visual designs that communicate your brand message effectively</p>
-          <a style="color:#2563eb; font-weight:600; margin-top:10px; display:inline-block;" href="#contact" aria-label="Contact about graphic design">Learn More →</a>
-        </div>
-
-        <div class="service-card">
-          <div style="font-size:28px">📱</div>
-          <h3>Social Media Management</h3>
-          <p>Strategic social media content and campaigns to engage your audience</p>
-          <a style="color:#2563eb; font-weight:600; margin-top:10px; display:inline-block;" href="#contact" aria-label="Contact about social media management">Learn More →</a>
-        </div>
-      </div>
-
-      <div class="see-more">
-        <a class="btn" href="#contact" style="text-decoration:none;">See More Services →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TIMELINE / ACADEMIC -->
-  <section id="about" class="timeline">
-    <div class="container">
-      <h2>My Academic <span style="color:#2563eb">Journey</span></h2>
-
-      <div class="wrap">
-        <div class="line-column">
-          <div class="vertical"></div>
-          <div class="dot" style="top:30px;"></div>
-        </div>
-
-        <div class="edu-cards">
-          <div class="edu-card">
-            <h3 style="font-weight:800;">High School</h3>
-            <p style="color:#94a3b8; margin-top:8px;">Carmel school chamba</p>
-            <p style="color:#94a3b8; margin-top:8px;">ICSE</p>
-            <div style="margin-top:12px; color:#94a3b8;">📅 2022</div>
-            <a style="color:#2563eb; font-weight:600; margin-top:12px; display:inline-block;" href="#contact">View More →</a>
-          </div>
-
-          <div class="edu-card">
-            <h3 style="font-weight:800;">INTERMEDIATE</h3>
-            <p style="color:#94a3b8; margin-top:8px;">Carmel school chamba</p>
-            <p style="color:#94a3b8; margin-top:8px;">ISC</p>
-            <div style="margin-top:12px; color:#94a3b8;">📅 2024</div>
-            <a style="color:#2563eb; font-weight:600; margin-top:12px; display:inline-block;" href="#contact">View More →</a>
-          </div>
-
-          <div class="edu-card">
-            <h3 style="font-weight:800;">COLLEGE</h3>
-            <p style="color:#94a3b8; margin-top:8px;">Graphic era hill university,</p>
-            <p style="color:#94a3b8; margin-top:8px;">Dehradun</p>
-            <div style="margin-top:12px; color:#94a3b8;">📅 2024 - 2028</div>
-            <a style="color:#2563eb; font-weight:600; margin-top:12px; display:inline-block;" href="#contact">View More →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS (simple placeholder to match nav) -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <div class="heading">Featured <span style="color:#2563eb">Projects</span></div>
-      <div class="sub">A few things I've designed & developed recently</div>
-
-      <div class="proj-grid">
-        <article class="proj-card">
-          <img src="project1.jpg" alt="Project 1 screenshot">
-          <div class="proj-body">
-            <h4>Project One</h4>
-            <p>Landing page redesign with responsive UI.</p>
-            <div class="proj-tags">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj-card">
-          <img src="project2.jpg" alt="Project 2 screenshot">
-          <div class="proj-body">
-            <h4>Project Two</h4>
-            <p>Portfolio site with smooth scrolling and animations.</p>
-            <div class="proj-tags">
-              <span class="tag">Design</span><span class="tag">Front‑End</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="proj-card">
-          <img src="project3.jpg" alt="Project 3 screenshot">
-          <div class="proj-body">
-            <h4>Project Three</h4>
-            <p>Branding kit & style guide.</p>
-            <div class="proj-tags">
-              <span class="tag">Brand</span><span class="tag">UI</span>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="view-all-btn">
-        <a class="btn" href="#contact" style="text-decoration:none;">View All Projects →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA / CONTACT -->
-  <section id="contact" class="cta" aria-label="Contact">
-    <div class="container">
-      <h2>Let's Work Together</h2>
-      <p>Ready to bring your ideas to life? Let's discuss your project and create something amazing together.</p>
-
-      <div style="margin-top:18px;">
-        <a class="cta-btn" href="mailto:shristkrishali@gmail.com" aria-label="Send me an email">📧 Email</a>
-        <a class="cta-btn" href="https://wa.me/918433041980" aria-label="Chat on WhatsApp">
-          <!-- WhatsApp Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" aria-hidden="true">
-            <path fill="#fff" d="M4.868 43.041l2.694-9.82a18.458 18.458 0 01-2.78-9.797C4.782 12.39 13.172 4 23.999 4c5.11 0 9.907 1.994 13.513 5.6 3.607 3.606 5.601 8.402 5.601 13.513.001 10.827-8.389 19.217-19.217 19.217-3.293 0-6.51-.83-9.387-2.407l-9.641 3.118z"/>
-            <path fill="#25D366" d="M4.868 43.041l2.694-9.82a18.458 18.458 0 01-2.78-9.797C4.782 12.39 13.172 4 23.999 4c5.11 0 9.907 1.994 13.513 5.6 3.607 3.606 5.601 8.402 5.601 13.513.001 10.827-8.389 19.217-19.217 19.217-3.293 0-6.51-.83-9.387-2.407l-9.641 3.118z"/>
-            <path fill="#fff" d="M17.472 14.118c-.35-.784-.718-.8-1.049-.814l-.894-.014c-.31 0-.81.115-1.235.575-.425.46-1.621 1.583-1.621 3.863 0 2.279 1.659 4.481 1.889 4.788.23.307 3.208 5.14 7.91 7.251 3.912 1.722 4.707 1.38 5.562 1.294.855-.085 2.746-1.122 3.133-2.205.387-1.084.387-2.013.271-2.205-.115-.191-.425-.307-.894-.537-.47-.23-2.746-1.353-3.17-1.507-.425-.153-.735-.23-1.049.23-.315.46-1.202 1.506-1.475 1.815-.272.307-.54.345-1.01.115-.47-.23-1.983-.73-3.775-2.326-1.394-1.243-2.331-2.774-2.604-3.234-.273-.46-.029-.708.201-.938.207-.206.46-.537.69-.807.23-.269.307-.46.46-.768.153-.307.077-.575-.038-.807-.115-.23-1.006-2.41-1.413-3.288z"/>
-          </svg>
-          WhatsApp
-        </a>
-        <a class="cta-btn" href="https://www.instagram.com/shresth_krishali" aria-label="Instagram profile">
-          <!-- Instagram Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-            <linearGradient id="instaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#f58529"/>
-              <stop offset="25%" style="stop-color:#feda77"/>
-              <stop offset="50%" style="stop-color:#dd2a7b"/>
-              <stop offset="75%" style="stop-color:#8134af"/>
-              <stop offset="100%" style="stop-color:#515bd4"/>
-            </linearGradient>
-            <path fill="url(#instaGradient)" d="M12 2.2c3.2 0 3.6.012 4.9.07 1.17.054 1.97.24 2.43.41.61.24 1.04.53 1.49.98.45.45.74.88.98 1.49.17.46.356 1.26.41 2.43.058 1.3.07 1.7.07 4.9s-.012 3.6-.07 4.9c-.054 1.17-.24 1.97-.41 2.43-.24.61-.53 1.04-.98 1.49-.45.45-.88.74-1.49.98-.46.17-1.26.356-2.43.41-1.3.058-1.7.07-4.9.07s-3.6-.012-4.9-.07c-1.17-.054-1.97-.24-2.43-.41-.61-.24-1.04-.53-1.49-.98-.45-.45-.74-.88-.98-1.49-.17-.46-.356-1.26-.41-2.43C2.212 15.6 2.2 15.2 2.2 12s.012-3.6.07-4.9c.054-1.17.24-1.97.41-2.43.24-.61.53-1.04.98-1.49.45-.45.88-.74 1.49-.98.46-.17 1.26-.356 2.43-.41C8.4 2.212 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.012-4.76.07-1.03.047-1.58.22-1.95.37-.49.19-.84.42-1.21.79-.37.37-.6.72-.79 1.21-.15.37-.323.92-.37 1.95-.058 1.24-.07 1.61-.07 4.76s.012 3.52.07 4.76c.047 1.03.22 1.58.37 1.95.19.49.42.84.79 1.21.37.37.72.6 1.21.79.37.15.92.323 1.95.37 1.24.058 1.61.07 4.76.07s3.52-.012 4.76-.07c1.03-.047 1.58-.22 1.95-.37.49-.19.84-.42 1.21-.79.37-.37.6-.72.79-1.21.15-.37.323-.92.37-1.95.058-1.24.07-1.61.07-4.76s-.012-3.52-.07-4.76c-.047-1.03-.22-1.58-.37-1.95-.19-.49-.42-.84-.79-1.21-.37-.37-.72-.6-1.21-.79-.37-.15-.92-.323-1.95-.37-1.24-.058-1.61-.07-4.76-.07zm0 3.3a6.5 6.5 0 110 13 6.5 6.5 0 010-13zm0 1.8a4.7 4.7 0 100 9.4 4.7 4.7 0 000-9.4zm5.9-2.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/>
-          </svg>
-          Instagram
-        </a>
-      </div>
-
-      <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top:36px; max-width:1000px; margin-left:auto; margin-right:auto; color:rgba(255,255,255,0.9);">
-        <div>
-          <h4 style="font-weight:700;">✉️ Email</h4>
-          <p style="margin-top:8px;"><a href="mailto:shristkrishali@gmail.com" style="color:white; text-decoration:none;">shristkrishali@gmail.com</a></p>
-        </div>
-        <div>
-          <h4 style="font-weight:700;">📞 Phone</h4>
-          <p style="margin-top:8px;"><a href="tel:+918433041980" style="color:white; text-decoration:none;">+91 8433041980</a></p>
-        </div>
-        <div>
-          <h4 style="font-weight:700;">📍 Location</h4>
-          <p style="margin-top:8px;">Dehradun, India</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 Samriddhi Thapa / all rights reserved.
-  </footer>
-
-  <script>
-    // Smooth scroll for anchor links on the same page
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
